@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: webserver
+  namespace: expense
+spec:
+  containers:
+  - name: nginx
+    image: nginx
