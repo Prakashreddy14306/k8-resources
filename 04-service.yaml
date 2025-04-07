@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: service
+metadata:
+  name: test
+spec:
+  ports:
+  - protocol: tcp
+    port: 80
+    targetport: 80

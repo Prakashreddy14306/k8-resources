@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: replicaset
+metadata:
+  name: replica 
+  labels:
+    name: test-labels
+    project: expense
+    component: test
+spec:
+  replicaset: 3
+  selectors:
+    mathchlabels:
+      name: test-labels
+      project: expense
+      component: test
+  templete:
+    metadata:
+      labels:
+        name: test-labels
+        project: expense
+        component: test
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
