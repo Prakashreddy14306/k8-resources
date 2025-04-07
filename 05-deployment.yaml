@@ -29,8 +29,8 @@ metadata:
   name: Deployment-service
   namespace: expense
 spec:
-  type: Nodeport
-  selectors:
+  type: NodePort
+  selector:
     labels:
       project: expense
       app: expense-app
