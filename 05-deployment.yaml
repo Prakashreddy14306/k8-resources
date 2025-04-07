@@ -6,7 +6,7 @@ metadata:
 spec:
   replicas: 3
   selector:
-    mathchLabels:
+    matchLabels:
       project: expense
       app: expense-app
       version: "1.0"
@@ -31,7 +31,6 @@ metadata:
 spec:
   type: NodePort
   selector:
-    labels:
       project: expense
       app: expense-app
       version: "1.0"
