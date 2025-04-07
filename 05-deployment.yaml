@@ -23,8 +23,8 @@ spec:
         ports:
         - containerPort: 80
 ---
+kind: Service
 apiVersion: v1
-kind: service
 metadata:
   name: Deployment-service
   namespace: expense
