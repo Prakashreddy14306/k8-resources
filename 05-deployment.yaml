@@ -4,8 +4,8 @@ metadata:
   name: ninx-deployment
   namespace: expense
 spec:
-  replicaset: 3
-  selectors:
+  replicas: 3
+  selector:
     mathchLabels:
       project: expense
       app: expense-app
