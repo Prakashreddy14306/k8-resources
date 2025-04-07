@@ -1,49 +1,45 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ninx-deployment
-  namespace: expense
+  name: nginx
+  # labels of deployment resource
   labels:
-    project: expense
-    app: expense-app
-    version: "1.0"
+    app: nginx
+    tier: frontend
+    purpose: deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      project: expense
-      app: expense-app
-      version: "1.0"
-  templete:
+      app: nginx
+      tier: frontend
+      purpose: deployment
+  template:
     metadata:
       labels:
-        project: expense
-        app: expense-app
-        version: "1.0"
+        app: nginx
+        tier: frontend
+        purpose: deployment
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: joindevops/deployment:2.0
         ports:
         - containerPort: 80
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: Deployment-service
-  namespace: expense
+  name: nginx
 spec:
-  type: NodePort
-  selector:
-      project: expense
-      app: expense-app
-      version: "1.0"
+  type: LoadBalancer
+  selector: # labels are used as selectors
+    app: nginx
+    tier: frontend
+    purpose: deployment
   ports:
-  - protocol: TCP 
-    port: 80
-    targetport: 80
-    NodePort: 30007
-
-    
-        
+  - protocol: TCP
+    port: 80 # service port
+    targetPort: 80
+    nodePort: 30007
 
