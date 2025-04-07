@@ -3,6 +3,10 @@ kind: Deployment
 metadata:
   name: ninx-deployment
   namespace: expense
+  labels:
+    project: expense
+    app: expense-app
+    version: "1.0"
 spec:
   replicas: 3
   selector:
