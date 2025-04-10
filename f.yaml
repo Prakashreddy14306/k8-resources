@@ -35,13 +35,13 @@ metadata:
 spec:
   type: NodePort
   selector:
-      project: expense
-      app: expense-app
-      version: "1.0"
+    project: expense
+    app: expense-app
+    version: "1.0"
   ports:
   - protocol: TCP 
     port: 80
-    targetport: 80
+    targetPort: 80
     nodePort: 30007
 
     
