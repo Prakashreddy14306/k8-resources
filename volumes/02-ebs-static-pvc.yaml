@@ -1,0 +1,46 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ebs-static
+spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  # PV name
+  volumeName: ebs-static
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+kind: pod
+apiVersion: apps/v1
+metadata:
+  name: nginx-ebs
+  namespace: expense
+  labels:
+    purpose: "ebs-static-test"
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: Persistent-volume
+      mountPath: /usr/share/nginx/html/
+  volumes:
+  - name: Persistent-volume
+    PersistentVolumeClaim:
+      claimName: ebs-static 
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  type: Loadbalancer
+  selector: # labels are used as selectors
+    purpose: "ebs-static-volume"
+  ports:
+  - protocol: TCP
+    port: 80 # service port
+    targetPort: 80
+    nodePort: 30007
