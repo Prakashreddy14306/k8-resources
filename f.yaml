@@ -14,7 +14,7 @@ spec:
       project: expense
       app: expense-app
       version: "1.0"
-  templete:
+  template:
     metadata:
       labels:
         project: expense
