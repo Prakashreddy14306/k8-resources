@@ -13,7 +13,7 @@ spec:
       storage: 20Gi
 ---
 kind: pod
-apiVersion: apps/v1
+apiVersion: v1
 metadata:
   name: nginx-ebs
   namespace: expense
