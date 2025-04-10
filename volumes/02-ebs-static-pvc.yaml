@@ -15,7 +15,7 @@ spec:
 kind: pod
 apiVersion: apps/v1
 metadata:
-  name: nginx-ebs
+  name: nginx
   namespace: expense
   labels:
     purpose: "ebs-static-test"
