@@ -31,16 +31,33 @@ spec:
     PersistentVolumeClaim:
       claimName: ebs-static 
 ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: nginx
+# spec:
+#   type: Loadbalancer
+#   selector: # labels are used as selectors
+#     purpose: "ebs-static-volume"
+#   ports:
+#   - protocol: TCP
+#     port: 80 # service port
+#     targetPort: 80
+#     nodePort: 30007
+---    
 kind: Service
 apiVersion: v1
 metadata:
-  name: nginx
+  name: nginx-lb
+  namespace: expense
 spec:
-  type: Loadbalancer
+  type: LoadBalancer
   selector: # labels are used as selectors
-    purpose: "ebs-static-volume"
+    purpose: "ebs-static-test"
   ports:
   - protocol: TCP
     port: 80 # service port
     targetPort: 80
     nodePort: 30007
+
+
