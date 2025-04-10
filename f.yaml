@@ -30,7 +30,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: Deployment-service
+  name: deployment-service
   namespace: expense
 spec:
   type: NodePort
