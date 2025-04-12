@@ -43,7 +43,7 @@ spec:
     port: 80
     targetPort: 80
     nodePort: 30007
----
+
 # kind: Service
 # apiVersion: v1
 # metadata:
@@ -58,6 +58,4 @@ spec:
 #     targetPort: 80
 #     nodePort: 30007
 
-
-----
 # hi
