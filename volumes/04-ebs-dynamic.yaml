@@ -29,31 +29,31 @@ spec:
   - name: persistent-storage
     persistentVolumeClaim:
       claimName: ebs-dynamic
-# ---
-# apiVersion: v1 
-# kind: service
-# metadata:
-#   name: ebs-dynamic
-# spec:
-#   type: LoadBalancer
-#   selector: 
-#     purpose: "ebs-dynamic-demo"
-#   ports:
-#   - protocol: TCP
-#     port: 80
-#     targetPort: 80
-#     nodePort: 30007
 ---
-kind: Service
+kind: service
 apiVersion: v1
 metadata:
   name: nginx-dynamic
 spec:
   type: LoadBalancer
-  selector: # labels are used as selectors
+  selector: 
     purpose: "ebs-dynamic-demo"
   ports:
   - protocol: TCP
-    port: 80 # service port
+    port: 80
     targetPort: 80
     nodePort: 30007
+---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: nginx-dynamic
+# spec:
+#   type: LoadBalancer
+#   selector: # labels are used as selectors
+#     purpose: "ebs-dynamic-demo"
+#   ports:
+#   - protocol: TCP
+#     port: 80 # service port
+#     targetPort: 80
+#     nodePort: 30007
