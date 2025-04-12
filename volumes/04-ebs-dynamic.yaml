@@ -30,7 +30,7 @@ spec:
     persistentVolumeClaim:
       claimName: ebs-dynamic
 ---
-kind: service
+kind: Service
 apiVersion: v1
 metadata:
   name: nginx-dynamic
