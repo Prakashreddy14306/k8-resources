@@ -6,6 +6,7 @@ metadata:
     name: test-labels
     project: expense
     component: test
+  namespace: expense
 spec:
   replicaset: 3
   selectors:
