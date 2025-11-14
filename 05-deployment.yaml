@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
-  # labels of deployment resource
   labels:
     app: nginx
     tier: frontend
@@ -27,19 +26,18 @@ spec:
         ports:
         - containerPort: 80
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: nginx
 spec:
-  type: NodePort
-  selector: # labels are used as selectors
+  type: NodePort   # REQUIRED when using nodePort
+  selector:
     app: nginx
     tier: frontend
     purpose: deployment
   ports:
   - protocol: TCP
-    port: 80 # service port
+    port: 80
     targetPort: 80
     nodePort: 30007
-
