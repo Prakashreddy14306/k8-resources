@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ninx-deployment
+  name: nginx-deployment
   namespace: expense
   labels:
     project: expense
@@ -27,22 +27,18 @@ spec:
         ports:
         - containerPort: 80
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: deployment-service
   namespace: expense
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     project: expense
     app: expense-app
     version: "1.0"
   ports:
-  - protocol: TCP 
+  - protocol: TCP
     port: 80
     targetPort: 80
-    nodePort: 30007
-
-    
-        
