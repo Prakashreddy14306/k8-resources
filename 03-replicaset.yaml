@@ -1,28 +1,18 @@
 apiVersion: apps/v1
-kind: replicaset
+kind: ReplicaSet
 metadata:
-  name: replica 
-  labels:
-    name: test-labels
-    project: expense
-    component: test
+  name: replica
   namespace: expense
 spec:
-  replicaset: 3
-  selectors:
-    mathchlabels:
-      name: test-labels
-      project: expense
-      component: test
-  templete:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
     metadata:
       labels:
-        name: test-labels
-        project: expense
-        component: test
+        app: nginx
     spec:
       containers:
       - name: nginx
-        image: nginx
-        ports:
-        - containerPort: 80
+        image: nginx:latest
