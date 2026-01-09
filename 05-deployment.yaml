@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: joindevops/deployment:2.0
+        image: nginx:latest
         ports:
         - containerPort: 80
 ---
@@ -31,7 +31,7 @@ kind: Service
 metadata:
   name: nginx
 spec:
-  type: NodePort   # REQUIRED when using nodePort
+  # type: NodePort   # REQUIRED when using nodePort
   selector:
     app: nginx
     tier: frontend
@@ -40,4 +40,3 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-    nodePort: 30007
