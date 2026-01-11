@@ -12,6 +12,7 @@ spec:
     name: web
   selector:
     app: nginx
+    demo: statefulset
 ---
 apiVersion: apps/v1
 kind: StatefulSet
