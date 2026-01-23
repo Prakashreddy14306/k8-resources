@@ -11,3 +11,8 @@ spec:
         - containerPort: 80
   nodeSelector:
     topology.kubernetes.io/zone: us-east-1c
+  tolerations:
+    - key: "key"
+      operator: "Equal"
+      value: "value1"
+      effect: "Noexecute"
