@@ -1,0 +1,5 @@
+apiversion: v1 
+kind: secret 
+Metadata:
+    name: mysql
+type: Op
